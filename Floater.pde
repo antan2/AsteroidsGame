@@ -1,4 +1,4 @@
-class Floater //Do NOT modify the Floater class! Make changes in the Spaceship class 
+class floater //Do NOT modify the Floater class! Make changes in the Spaceship class 
 {   
   protected int corners;  //the number of corners, a triangular floater has 3   
   protected int[] xCorners;   
@@ -15,12 +15,12 @@ class Floater //Do NOT modify the Floater class! Make changes in the Spaceship c
     double dRadians =myPointDirection*(Math.PI/180);     
     //change coordinates of direction of travel    
     myXspeed += ((dAmount) * Math.cos(dRadians));    
-    myYspeed += ((dAmount) * Math.sin(dRadians));       
+    myYspeed += ((dAmount) * Math.sin(dRadians));
   }   
   public void turn (double degreesOfRotation)   
   {     
     //rotates the floater by a given number of degrees    
-    myPointDirection+=degreesOfRotation;   
+    myPointDirection+=degreesOfRotation;
   }   
   public void move ()   //move the floater in the current direction of travel
   {      
@@ -28,39 +28,54 @@ class Floater //Do NOT modify the Floater class! Make changes in the Spaceship c
     myCenterX += myXspeed;    
     myCenterY += myYspeed;     
 
-    //wrap around screen    
-    if(myCenterX >width)
-    {     
-      myCenterX = 0;    
-    }    
-    else if (myCenterX<0)
-    {     
-      myCenterX = width;    
-    }    
-    if(myCenterY >height)
-    {    
-      myCenterY = 0;    
-    } 
-    
-    else if (myCenterY < 0)
-    {     
-      myCenterY = height;    
-    }   
+    //wrap around screen  
+    /*
+    if (myCenterX >width)
+     {     
+     myCenterX = 0;
+     } else if (myCenterX<0)
+     {     
+     myCenterX = width;
+     }    
+     if (myCenterY >height)
+     {    
+     myCenterY = 0;
+     } else if (myCenterY < 0)
+     {     
+     myCenterY = height;
+     }
+     */
+    float tempX = (float)myCenterX;
+    float tempY = (float)myCenterY;
+    while (tempX + camX> width) {
+      tempX -= width;
+    }
+    while (tempY + camY> height) {
+      tempY -= height;
+    }
+    while (tempX + camX< 0) {
+      tempX += width;
+    }
+    while (tempY + camY< 0) {
+      tempY += height;
+    }
+    myCenterX = tempX;
+    myCenterY = tempY;
   }   
   public void show ()  //Draws the floater at the current position  
   {             
     fill(myColor);   
     stroke(myColor);    
-    
+
     //translate the (x,y) center of the ship to the correct position
-    translate((float)myCenterX, (float)myCenterY);
+    translate((float)myCenterX, (float) myCenterY);
 
     //convert degrees to radians for rotate()     
     float dRadians = (float)(myPointDirection*(Math.PI/180));
-    
+
     //rotate so that the polygon will be drawn in the correct direction
     rotate(dRadians);
-    
+
     //draw the polygon
     beginShape();
     for (int nI = 0; nI < corners; nI++)
@@ -68,9 +83,8 @@ class Floater //Do NOT modify the Floater class! Make changes in the Spaceship c
       vertex(xCorners[nI], yCorners[nI]);
     }
     endShape(CLOSE);
-
     //"unrotate" and "untranslate" in reverse order
     rotate(-1*dRadians);
     translate(-1*(float)myCenterX, -1*(float)myCenterY);
-  }   
+  }
 } 
