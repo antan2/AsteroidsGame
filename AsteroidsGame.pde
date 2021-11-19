@@ -57,7 +57,7 @@ public void draw() {
   ((spaceship) spaceJunk[0]).speedCap(15);
   spaceJunk[0].show();
 
-  translate(-1 * (float)camX, (float)camY);
+  translate(-1 * (float)camX, -1 * (float)camY);
   sinT++;
 }
 public void keyPressed() {
