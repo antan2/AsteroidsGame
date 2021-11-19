@@ -30,3 +30,41 @@ class star //note that this class does NOT extend Floater
     st+= 0.5;
   }
 }
+
+//Asteroid
+//------------
+class asteroid extends floater {
+  private float size;
+  public asteroid() {
+    float tempX = 9999;
+    float tempY = 9999;
+    float tempRot = 0;
+    size = (float)(Math.random()*15+10);
+    corners = (int)(Math.random()*8+8);
+    xCorners = new int[corners];
+    yCorners = new int[corners];
+    for (int i = 0; i < corners; i++) {
+      tempRot  = i*TWO_PI/corners;
+      tempRot += Math.random()*TWO_PI/corners;
+      if (i % 3 == 0) {
+        xCorners[i] = (int)(0.8*size*Math.cos(tempRot));
+        yCorners[i] = (int)(0.8*size*Math.sin(tempRot));
+      } else {
+        xCorners[i] = (int)(size*Math.cos(tempRot));
+        yCorners[i] = (int)(size*Math.sin(tempRot));
+      }
+    }
+    myColor = color(255, 255, 255);
+    tempX = 0;
+    tempY = 0;
+    while (dist(0, 0, tempX, tempY)<300) {
+      tempX = (int)(Math.random()*1000-500);
+      tempY = (int)(Math.random()*1000-500);
+    }
+    myCenterX = tempX;
+    myCenterY = tempY;
+    myXspeed = (Math.random()*4-2);
+    myYspeed = (Math.random()*4-2);
+  }
+}
+
