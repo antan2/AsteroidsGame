@@ -8,6 +8,7 @@ class spaceship extends floater {
     myCenterY = 0;
     myXspeed = 0;
     myYspeed = 0;
+    myPointDirection = Math.random()*TWO_PI;
   }
   public void move() {
     myXspeed *= 0.999;
