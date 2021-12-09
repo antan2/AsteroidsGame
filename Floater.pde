@@ -1,3 +1,5 @@
+//Floaters
+//------------------------
 class floater //Do NOT modify the Floater class! Make changes in the Spaceship class 
 {   
   protected int corners;  //the number of corners, a triangular floater has 3   
@@ -27,24 +29,6 @@ class floater //Do NOT modify the Floater class! Make changes in the Spaceship c
     //change the x and y coordinates by myXspeed and myYspeed       
     myCenterX += myXspeed;    
     myCenterY += myYspeed;     
-
-    //wrap around screen  
-    /*
-    if (myCenterX >width)
-     {     
-     myCenterX = 0;
-     } else if (myCenterX<0)
-     {     
-     myCenterX = width;
-     }    
-     if (myCenterY >height)
-     {    
-     myCenterY = 0;
-     } else if (myCenterY < 0)
-     {     
-     myCenterY = height;
-     }
-     */
     float tempX = (float)myCenterX;
     float tempY = (float)myCenterY;
     while (tempX + camX> width) {
