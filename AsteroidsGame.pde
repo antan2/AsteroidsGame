@@ -4,7 +4,7 @@ public star[] shines = new star[500];
 public ArrayList <spaceship> ship = new ArrayList <spaceship>();
 public ArrayList <asteroid> spaceJunk = new ArrayList <asteroid>();
 public ArrayList <pellet> bullet = new ArrayList <pellet>();
-public double sinT = 0; 
+public double sinT = 0;
 public double camX = 500;
 public double camY = 500;
 public boolean accel = false;
@@ -142,7 +142,7 @@ public void display() {
     fill(255, 255, 255);
     stroke(255, 255, 255);
     beginShape();
-    vertex((25*i+5)- 10, 20); 
+    vertex((25*i+5)- 10, 20);
     vertex((25*i+5), 30);
     vertex((25*i+5)+ 10, 20);
     vertex((25*i+5)+ 5, 15);
@@ -150,16 +150,30 @@ public void display() {
     vertex((25*i+5)- 5, 15);
     endShape();
   }
+  /*
   fontText("score " + score, width-10, 20, 10, 15, color(255, 255, 255), "RIGHT", "digital");
   strokeWeight(1);
+  */
+  textSize(20);
+  textAlign(RIGHT);
+  text("Score: " + score, width-10, 20);
   if (gameOver) {
     fill(0, 0, 0, 50);
     noStroke();
     rect(0, 0, width, height);
+    /*
     fontText("game over", width/2, height/2-height/10, 30, 45, color(255, 255, 255), "CENTER", "digital");
-    fontText("final score " + score, width/2, height/2, 20, 30, color(255, 255, 255), "CENTER", "digital");
-    fontText("press any key to try again", width/2, height/2+height/10, 20, 30, color(255, 255, 255), "CENTER", "digital");
-    strokeWeight(1);
+     fontText("final score " + score, width/2, height/2, 20, 30, color(255, 255, 255), "CENTER", "digital");
+     fontText("press any key to try again", width/2, height/2+height/10, 20, 30, color(255, 255, 255), "CENTER", "digital");
+     strokeWeight(1);
+     */
+    fill(255, 255, 255);
+    textSize(60);
+    textAlign(CENTER, CENTER);
+    text("Game Over", width/2, height/2-height/10);
+    textSize(40);
+    text("Final Score: "+ score, width/2, height/2);
+    text("Press any key to try again", width/2, height/2+height/10);
     noLoop();
   }
 }
